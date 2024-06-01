@@ -12,11 +12,12 @@ app.use(cors());
 app.use("/api/products", ProductRoutes);
 app.use("/api/orders", OrderRoutes);
 
+
+app.get("/", (req: Request, res: Response) => {
+  res.send("Welcome to my assignment two server"); 
+});
 app.use(notFoundHandler);
 app.use(errorHandler);
-app.get("/", (req: Request, res: Response) => {
-  res.send("Hello World!"); 
-});
 
 
 

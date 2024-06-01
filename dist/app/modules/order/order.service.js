@@ -16,14 +16,16 @@ const createOrder = (orderData) => __awaiter(void 0, void 0, void 0, function* (
     const { productId, quantity } = orderData;
     const product = yield product_model_1.Product.findById(productId);
     if (!product || product.isDeleted) {
-        throw new Error('Product not found');
+        throw new Error('Product not found or is deleted');
     }
     if (product.inventory.quantity < quantity) {
         throw new Error('Insufficient quantity available in inventory');
     }
+    // Update product inventory
     product.inventory.quantity -= quantity;
     product.inventory.inStock = product.inventory.quantity > 0;
     yield product.save();
+    // Create and save the order
     const order = new order_model_1.Order(orderData);
     const result = yield order.save();
     return result;
