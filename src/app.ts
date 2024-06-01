@@ -9,6 +9,7 @@ app.use(express.json());
 app.use(cors());
 
 app.use("/api/products", ProductRoutes);
+app.use("/api/orders", OrderRoutes);
 
 app.use(notFoundHandler);
 app.use(errorHandler);
