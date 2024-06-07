@@ -6,7 +6,7 @@ import productValidationSchema from "./product.validation";
 // create product controller
 const createProduct = async (req: Request, res: Response) => {
   try {
-    const { product: productData } = req.body;
+    const productData = req.body;
 
     const zodParseData = productValidationSchema.parse(productData);
 

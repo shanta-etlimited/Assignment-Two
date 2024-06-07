@@ -3,7 +3,6 @@ import { Product } from "./product.model";
 
 const createProductIntoDB = async (productData: TProduct) => {
     // const result = await ProductModel.create(product); //built in static method
-
     const product = new Product(productData);
     if(await product.isProductExists(productData.name)){
         throw new Error('Product already exists');

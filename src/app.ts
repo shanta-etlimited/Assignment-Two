@@ -19,6 +19,4 @@ app.get("/", (req: Request, res: Response) => {
 app.use(notFoundHandler);
 app.use(errorHandler);
 
-
-
 export default app;
